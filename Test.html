@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+<h1>PROGRAMA DE ADIVINACION DE NUMERO</h1>
+<input>
+<button>comprobar</button>
+<script>
+//var numero = Math.round(Math.random()*10);
+//var numeros = []
+
+//document.write(numeros);
+input = document.querySelector("input");
+input.focus();
+function generar_numero(){
+  return Math.round(Math.random()*10);
+}
+function agregar_arreglo(cantidad){
+  numeros = [];
+  for(var i=1;i<=cantidad;i++){
+    n_aleatorio = (generar_numero());
+    //numeros.push(n_aleatorio);
+    
+    n_repetido = false;
+    for(ii=0;ii<numeros.length;ii++){
+      if(numeros[ii] == n_aleatorio){
+        n_repetido = true;
+      }
+    }
+    if(n_repetido == false){
+      numeros.push(n_aleatorio);
+    }  
+    //
+  }
+  return numeros;
+}
+function verificar(){
+  acerto = false;
+  for(var i = 0;i < numeros.length;i++){
+    if(input.value == numeros[i]){
+      alert("usted acerto");
+      acerto = true;
+      break;
+      
+    }
+  }
+  
+  if (acerto == false){
+    alert("usted erro");
+  }
+    
+  
+  input.value = "";
+  input.focus();
+}
+var numeros = agregar_arreglo(11);
+console.log(numeros);
+button = document.querySelector("button");
+button.onclick = verificar;
+
+
+
+
+  
+</script>
+  
